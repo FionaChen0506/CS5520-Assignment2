@@ -10,6 +10,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import AddButton from './components/AddButton';
 import { Ionicons } from "@expo/vector-icons";
+import colors from './colors';
 
 
 const Stack = createNativeStackNavigator();
@@ -30,17 +31,17 @@ function MyTabs() {
 
           return iconComponent;
         },
-        tabBarActiveTintColor: '#d69704',
+        tabBarActiveTintColor: colors.yellow,
         tabBarInactiveTintColor: 'gray',
         headerStyle: {
-          backgroundColor:"#8cdebf"
+          backgroundColor:colors.teal,
         },
         headerTintColor: '#fff',
         headerTitleStyle: {
           fontWeight: 'bold',
         },
         tabBarStyle: {
-          backgroundColor: "#8cdebf", 
+          backgroundColor: colors.teal, 
         },
         headerRight: () => (
           <AddButton
@@ -76,7 +77,18 @@ export default function App() {
       <Stack.Screen name="Mytabs" 
                     component={MyTabs} 
                     options={{ headerShown: false }} />
-      <Stack.Screen name="Add An Expense" component={AddAnExpense} />
+      
+      <Stack.Screen name="Add An Expense" 
+                    component={AddAnExpense}
+                    options={{
+                      headerStyle: {
+                        backgroundColor:colors.teal,
+                      },
+                      headerTintColor: 'white',
+                      headerTitleStyle: {
+                        fontWeight: 'bold',
+                      },
+                    }} />
     </Stack.Navigator>
     </NavigationContainer>
   );
