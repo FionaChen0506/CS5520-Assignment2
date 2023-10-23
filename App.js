@@ -7,6 +7,7 @@ import OverbudgetExpenses from './screens/OverbudgetExpenses';
 import { NavigationContainer } from '@react-navigation/native';
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import { database } from './firebase/FirebaseSetup';
 
 
 const Stack = createNativeStackNavigator();
