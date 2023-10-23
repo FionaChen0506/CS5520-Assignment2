@@ -3,11 +3,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import AllExpenses from './screens/AllExpenses';
+import AddAnExpense from './screens/AddAnExpense';
 import OverbudgetExpenses from './screens/OverbudgetExpenses';
 import { NavigationContainer } from '@react-navigation/native';
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { database } from './firebase/FirebaseSetup';
+import AddButton from './components/AddButton';
+import { Ionicons } from "@expo/vector-icons";
 
 
 const Stack = createNativeStackNavigator();
@@ -16,7 +19,7 @@ const Tab = createBottomTabNavigator();
 function MyTabs() {
   return (
     <Tab.Navigator
-      screenOptions={({ route }) => ({
+      screenOptions={({route, navigation}) => ({
         tabBarIcon: ({ color, size }) => {
           let iconComponent;
 
@@ -40,6 +43,16 @@ function MyTabs() {
         tabBarStyle: {
           backgroundColor: "#8cdebf", 
         },
+        headerRight: () => (
+          <AddButton
+            icon="add"
+            size={28}
+            color={"white"}
+            onPress={() => {
+              navigation.navigate("Add An Expense");
+            }}
+          />
+        ),
       })}
       // tabBarOptions={{
       //   activeTintColor: '#84d1b4',
@@ -64,6 +77,7 @@ export default function App() {
       <Stack.Screen name="Mytabs" 
                     component={MyTabs} 
                     options={{ headerShown: false }} />
+      <Stack.Screen name="Add An Expense" component={AddAnExpense} />
     </Stack.Navigator>
     </NavigationContainer>
   );
