@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import EntriesList from '../components/EntriesList'
 
-const AllExpenses = ({navigation}) => {
+const AllExpenses = () => {
   return (
     <View >
-      <Text>AllExpenses</Text>
+      <EntriesList type="all" />
     </View>
   )
 }
