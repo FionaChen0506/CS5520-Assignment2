@@ -8,13 +8,13 @@ import PressableButton from '../components/PressableButton';
 const AddAnExpense = ({ navigation }) => {
     const [item, setItem] = useState('');
     const [unitPrice, setUnitPrice] = useState('');
-    const [quantity, setQuantity] = useState('1'); // Default to 1
+    const [quantity, setQuantity] = useState('0'); // Default to 0
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [quantities, setQuantities] = useState(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']); // Dropdown options
 
     const saveExpense = async () => {
-        if (!item || !unitPrice || !quantity) {
+        if (!item || !unitPrice || !quantity || quantity == 0) {
             Alert.alert('Invalid Data', 'Please fill in all fields');
             return;
           }
