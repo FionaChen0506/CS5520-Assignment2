@@ -4,14 +4,12 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import { writeToDB } from '../firebase/FirebaseHelper';
 import colors from '../colors';
 import PressableButton from '../components/PressableButton';
+import ExpenseForm from '../components/ExpenseForm';
 
 const AddAnExpense = ({ navigation }) => {
     const [item, setItem] = useState('');
     const [unitPrice, setUnitPrice] = useState('');
     const [quantity, setQuantity] = useState('0'); // Default to 0
-    const [open, setOpen] = useState(false);
-    const [value, setValue] = useState(null);
-    const [quantities, setQuantities] = useState(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']); // Dropdown options
 
     const saveExpense = async () => {
         if (!item || !unitPrice || !quantity || quantity == 0) {
@@ -44,38 +42,14 @@ const AddAnExpense = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-        <View style={styles.formContainer}>
-            <View style={styles.formField}>
-                <Text style={styles.labelText}>Item *</Text>
-                <TextInput
-                style={styles.inputField}
-                onChangeText={(text) => setItem(text)}
-                />
-            </View>
-            <View style={styles.formField}>
-                <Text style={styles.labelText}>Unit Price *</Text>
-                <TextInput
-                style={styles.inputField}
-                onChangeText={(text) => setUnitPrice(text)}
-                keyboardType="numeric"
-                />
-            </View>
-            <View style={styles.formField}>
-                <Text style={styles.labelText}>Quantity *</Text>
-                <DropDownPicker
-                placeholder=''
-                open={open}
-                value={value}
-                items={quantities.map((val) => ({ label: val, value: val }))}
-                setOpen={setOpen}
-                setValue={(val) => {
-                    setValue(val);
-                    setQuantity(val);
-                }}
-                style={styles.inputField}
-                />
-            </View>
-        </View>
+        <ExpenseForm
+            item={item}
+            unitPrice={unitPrice}
+            quantity={quantity}
+            onItemChange={(text) => setItem(text)}
+            onUnitPriceChange={(text) => setUnitPrice(text)}
+            onQuantityChange={(val) => setQuantity(val)}
+          />
         <View style={styles.buttonContainer}>
             <PressableButton
                 pressedFunction={handleCancel}
@@ -105,28 +79,6 @@ const styles = StyleSheet.create({
         //justifyContent: 'center',
         backgroundColor: colors.tealLight,
       },
-      formContainer:{
-        marginTop: 50,
-      },
-      formField: {
-        marginBottom: 20,
-        marginHorizontal: 25,
-      },
-      inputField: {
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-        borderRadius: 5,
-        padding: 5,
-        backgroundColor:colors.inputbackground,
-        color: colors.tealText, 
-        fontSize: 16,
-      },
-      labelText: {
-        fontSize: 16,
-        color: colors.tealText,
-        fontWeight:"bold",
-      },
       buttonContainer: {
         flexDirection: 'row',
         justifyContent: 'space-evenly',
@@ -149,9 +101,7 @@ const styles = StyleSheet.create({
         width:'35%',
         justifyContent: 'center',
       },
-    
       buttonText: {
-       
         color: 'white', 
         fontSize: 17,
       },
