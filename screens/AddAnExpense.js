@@ -10,6 +10,7 @@ const AddAnExpense = ({ navigation }) => {
     const [item, setItem] = useState('');
     const [unitPrice, setUnitPrice] = useState('');
     const [quantity, setQuantity] = useState('0'); // Default to 0
+    const [overbudgetLimit] = useState(500);
 
     const saveExpense = async () => {
         if (!item || !unitPrice || !quantity || quantity == 0) {
@@ -22,11 +23,14 @@ const AddAnExpense = ({ navigation }) => {
             return;
           }
       
+          const totalExpense = parseInt(unitPrice) * parseInt(quantity);
           const newExpenseEntry = {
             item,
             unitPrice: parseInt(unitPrice), 
             quantity: parseInt(quantity),
+            overbudget: totalExpense > overbudgetLimit,
           };
+          
         try {
             writeToDB(newExpenseEntry);
           } catch (error) {
