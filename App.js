@@ -64,10 +64,6 @@ function MyTabs() {
 
 export default function App() {
   return (
-    // <View style={styles.container}>
-    //   <Text>aaaaa</Text>
-    //   <StatusBar style="auto" />
-    // </View>
     <NavigationContainer>
     <Stack.Navigator>
       <Stack.Screen name="Mytabs" 
@@ -95,6 +91,7 @@ export default function App() {
                       headerTintColor: 'white',
                       headerTitleStyle: {
                         fontWeight: 'bold',
+                        textAlign: 'center',
                       },
                     }}
       />

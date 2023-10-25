@@ -34,8 +34,8 @@ const DeleteButton = ({ entryId, onDeleteSuccess }) => {
     return (
       <PressableButton
         pressedFunction={handleDelete}
-        defaultStyle={{ backgroundColor: colors.teal, opacity: 1 }}
-        pressedStyle={{ backgroundColor: colors.teal, opacity: 0.5 }}
+        pressedStyle={styles.buttonPressed}
+        defaultStyle={styles.buttonDefault}
       >
         <Ionicons name="ios-trash-outline" size={24} color="white" />
       </PressableButton>
@@ -43,3 +43,15 @@ const DeleteButton = ({ entryId, onDeleteSuccess }) => {
   };
   
 export default DeleteButton;
+
+const styles = StyleSheet.create({
+  buttonDefault: {
+    backgroundColor: colors.teal, 
+    opacity: 1,
+    justifyContent: 'center',
+  },
+  buttonPressed: {
+    backgroundColor: colors.teal, 
+    opacity: 0.5
+  },
+})

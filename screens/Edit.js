@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         padding: 4,
-        marginHorizontal: 10,
+        marginHorizontal: '4%',
         //marginTop:"25%",
     },
 

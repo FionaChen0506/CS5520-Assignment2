@@ -4,6 +4,7 @@ const colors = {
     "tealLight":"#daf0e8",
     "inputbackground":"#e3fcf5",
     "tealText":"#4e7874",
+    "tealButton":"#71ada8",
 
 
 

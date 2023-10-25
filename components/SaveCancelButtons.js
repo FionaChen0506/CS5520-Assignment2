@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text,StyleSheet, } from 'react-native';
 import PressableButton from './PressableButton';
+import colors from '../colors';
 
 const SaveCancelButtons = ({ onCancel, onSave }) => {
   return (
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
         marginTop:'5%',
       },
       buttonDefault: {
-        backgroundColor: '#71ada8',
+        backgroundColor: colors.tealButton,
         opacity: 1,
         borderRadius: 4,
         padding: 5,
