@@ -92,7 +92,18 @@ export default function App() {
                       },
                     }} />
       <Stack.Screen name="EntriesList" component={EntriesList} />
-      <Stack.Screen name="Edit" component={Edit} />
+      <Stack.Screen name="Edit"
+                    component={Edit}
+                    options={{
+                      headerStyle: {
+                        backgroundColor:colors.teal,
+                      },
+                      headerTintColor: 'white',
+                      headerTitleStyle: {
+                        fontWeight: 'bold',
+                      },
+                    }}  
+      />
     </Stack.Navigator>
     </NavigationContainer>
   );

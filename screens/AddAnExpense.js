@@ -9,7 +9,7 @@ import ExpenseForm from '../components/ExpenseForm';
 const AddAnExpense = ({ navigation }) => {
     const [item, setItem] = useState('');
     const [unitPrice, setUnitPrice] = useState('');
-    const [quantity, setQuantity] = useState('0'); // Default to 0
+    const [quantity, setQuantity] = useState(''); // Default to null
     const [overbudgetLimit] = useState(500);
 
     const saveExpense = async () => {

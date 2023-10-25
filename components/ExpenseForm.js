@@ -30,7 +30,7 @@ const ExpenseForm = ({ item, unitPrice, quantity, onItemChange, onUnitPriceChang
       <View style={styles.formField}>
         <Text style={styles.labelText}>Quantity *</Text>
         <DropDownPicker
-          placeholder=""
+          placeholder={quantity}
           open={open}
           value={value}
           items={quantities.map((val) => ({ label: val, value: val }))}

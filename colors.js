@@ -1,6 +1,5 @@
 const colors = {
-    "yellow":"#d69704",
-    //"teal":"#8cdebf",
+    "yellow":"#c26f04",
     "teal":"#80cfb1",
     "tealLight":"#daf0e8",
     "inputbackground":"#e3fcf5",

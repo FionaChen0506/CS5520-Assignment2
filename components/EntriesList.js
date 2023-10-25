@@ -41,7 +41,12 @@ const EntriesList = ({ type, navigation }) => {
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
               <TouchableOpacity
-                onPress={() => navigation.navigate('Edit', { entryId: item.id })}
+                onPress={() => navigation.navigate('Edit', { 
+                    entryId: item.id,
+                    item: item.item,
+                    unitPrice: item.unitPrice.toString(),
+                    quantity: item.quantity.toString(),
+                })}
               >
                 <View style={styles.entryContainer} >
                   <Text style={styles.itemText}>{item.item}</Text>
@@ -68,7 +73,7 @@ export default EntriesList;
 
 const styles = StyleSheet.create({
     container:{
-        marginTop: 25,
+        marginTop: 20,
     },
     entryContainer: {
         backgroundColor: colors.teal, 
@@ -95,7 +100,6 @@ const styles = StyleSheet.create({
       infoContainer:{
         flexDirection: 'row',
         alignItems: 'center',
-        //justifyContent: 'center',
         marginVertical:1,
       },
 
@@ -110,7 +114,6 @@ const styles = StyleSheet.create({
 
       priceText:{
         marginLeft: 3,
-        //backgroundColor: 'white',
         color: colors.tealText,
         fontWeight: 'bold',
         fontSize:16,
