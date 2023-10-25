@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View, TouchableOpacity, Alert} from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Alert,} from 'react-native'
 import React, { useLayoutEffect,useState } from 'react'
+import Checkbox from 'expo-checkbox';
 import ExpenseForm from '../components/ExpenseForm'
 import colors from '../colors';
 import DeleteButton from '../components/DeleteButton';
@@ -8,11 +9,13 @@ import { updateInDB } from '../firebase/FirebaseHelper';
 import { isDataValid } from '../components/ValidateInput';
 
 const EditScreen = ({ route,navigation }) => {
-    const { entryId, item, unitPrice, quantity } = route.params;
+    const { entryId, item, unitPrice, quantity, } = route.params;
     const [editedItem, setEditedItem] = useState(item);
     const [editedUnitPrice, setEditedUnitPrice] = useState(unitPrice);
     const [editedQuantity, setEditedQuantity] = useState(quantity);
+    const [isOverbudget, setIsOverbudget] = useState(route.params.overbudget);
     const [overbudgetLimit] = useState(500);
+    const [isChecked, setChecked] = useState(false);
 
     const handleItemChange = (text) => {
         setEditedItem(text);
@@ -57,12 +60,22 @@ const EditScreen = ({ route,navigation }) => {
               // this is the real "save" action
               onPress: () => {
                 const totalExpense = parseInt(editedUnitPrice) * parseInt(editedQuantity);
+                let updatedOverbudget;
+
+                if (isChecked) {
+                  // If the checkbox is checked, set "overbudget" to false
+                  updatedOverbudget = false;
+                } else {
+                  // If the checkbox is not checked, update "overbudget" based on the totalExpense
+                  updatedOverbudget = totalExpense > overbudgetLimit;
+                }
+                
                 // Prepare the updated entry object
                 const updatedEntry = {
                   item: editedItem,
                   unitPrice: editedUnitPrice,
                   quantity: editedQuantity,
-                  overbudget: totalExpense > overbudgetLimit,
+                  overbudget: updatedOverbudget,
                 };
       
                 // Call the updateInDB function to update the entry
@@ -91,6 +104,19 @@ const EditScreen = ({ route,navigation }) => {
           onUnitPriceChange={handleUnitPriceChange}
           onQuantityChange={handleQuantityChange}
         />
+
+        {isOverbudget && (
+        <View>
+            <Checkbox
+                style={styles.checkbox}
+                value={isChecked}
+                title="Overbudget"
+                onValueChange={setChecked}
+                color={isChecked ? colors.tealText : undefined} 
+            />
+            <Text> checkbox</Text>
+        </View>
+        )}
 
         <SaveCancelButtons onCancel={handleCancel} onSave={handleSave} />
       

@@ -46,6 +46,7 @@ const EntriesList = ({ type, navigation }) => {
                     item: item.item,
                     unitPrice: item.unitPrice.toString(),
                     quantity: item.quantity.toString(),
+                    overbudget:item.overbudget,
                 })}
               >
                 <View style={styles.entryContainer} >
