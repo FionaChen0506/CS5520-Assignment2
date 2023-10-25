@@ -106,7 +106,11 @@ const EditScreen = ({ route,navigation }) => {
         />
 
         {isOverbudget && (
-        <View>
+        <View style={styles.checkboxContainer}>
+            <Text style={styles.checkText}>
+                This item is marked as overbudget. 
+                Select the checkbox if you would like to approve it.
+            </Text>
             <Checkbox
                 style={styles.checkbox}
                 value={isChecked}
@@ -114,7 +118,7 @@ const EditScreen = ({ route,navigation }) => {
                 onValueChange={setChecked}
                 color={isChecked ? colors.tealText : undefined} 
             />
-            <Text> checkbox</Text>
+            
         </View>
         )}
 
@@ -130,7 +134,19 @@ const EditScreen = ({ route,navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        //justifyContent: 'center',
         backgroundColor: colors.tealLight,
-      },
+    },
+
+    checkboxContainer:{
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        padding: 4,
+        marginHorizontal: 10,
+        //marginTop:"25%",
+    },
+
+    checkText:{
+        color:colors.tealText,
+        fontWeight: 'bold',
+    },
 })

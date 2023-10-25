@@ -51,6 +51,7 @@ export default ExpenseForm;
 const styles = StyleSheet.create({
       formContainer:{
         marginTop: 50,
+        marginBottom: '50%',
       },
       formField: {
         marginBottom: 20,

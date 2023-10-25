@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         marginHorizontal: 20,
-        marginTop:'55%',
+        marginTop:'5%',
       },
       buttonDefault: {
         backgroundColor: '#71ada8',
