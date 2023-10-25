@@ -55,11 +55,6 @@ function MyTabs() {
           />
         ),
       })}
-      // tabBarOptions={{
-      //   activeTintColor: '#84d1b4',
-      //   inactiveTintColor: 'gray',
-      //   style: { backgroundColor: '#84d1b4' },
-      // }}
     >
       <Tab.Screen name="Home" component={AllExpenses} />
       <Tab.Screen name="Overbudget" component={OverbudgetExpenses} />

@@ -5,6 +5,7 @@ import { writeToDB } from '../firebase/FirebaseHelper';
 import colors from '../colors';
 import PressableButton from '../components/PressableButton';
 import ExpenseForm from '../components/ExpenseForm';
+import { isDataValid } from '../components/ValidateInput';
 
 const AddAnExpense = ({ navigation }) => {
     const [item, setItem] = useState('');
@@ -13,15 +14,9 @@ const AddAnExpense = ({ navigation }) => {
     const [overbudgetLimit] = useState(500);
 
     const saveExpense = async () => {
-        if (!item || !unitPrice || !quantity || quantity == 0) {
-            Alert.alert('Invalid Data', 'Please fill in all fields');
-            return;
-          }
-      
-          if (isNaN(unitPrice) || isNaN(quantity) || unitPrice < 0 || quantity < 0) {
-            Alert.alert('Invalid Data', 'Please enter valid numeric values for unit price');
-            return;
-          }
+        if(!isDataValid(item,unitPrice,quantity)) {
+          return;
+        }
       
           const totalExpense = parseInt(unitPrice) * parseInt(quantity);
           const newExpenseEntry = {
@@ -40,7 +35,7 @@ const AddAnExpense = ({ navigation }) => {
       };
 
     const handleCancel = () => {
-    navigation.goBack();
+      navigation.goBack();
     };
     
 
