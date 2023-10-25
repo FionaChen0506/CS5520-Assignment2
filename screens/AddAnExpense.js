@@ -6,6 +6,7 @@ import colors from '../colors';
 import PressableButton from '../components/PressableButton';
 import ExpenseForm from '../components/ExpenseForm';
 import { isDataValid } from '../components/ValidateInput';
+import SaveCancelButtons from '../components/SaveCancelButtons';
 
 const AddAnExpense = ({ navigation }) => {
     const [item, setItem] = useState('');
@@ -49,22 +50,7 @@ const AddAnExpense = ({ navigation }) => {
             onUnitPriceChange={(text) => setUnitPrice(text)}
             onQuantityChange={(val) => setQuantity(val)}
           />
-        <View style={styles.buttonContainer}>
-            <PressableButton
-                pressedFunction={handleCancel}
-                pressedStyle={styles.buttonPressed}
-                defaultStyle={styles.buttonDefault}
-            >
-                <Text style={styles.buttonText}>Cancel</Text>
-            </PressableButton>
-            <PressableButton
-                pressedFunction={saveExpense}
-                pressedStyle={styles.buttonPressed}
-                defaultStyle={styles.buttonDefault}
-            >
-                <Text style={styles.buttonText}>Save</Text>
-            </PressableButton>
-        </View>
+          <SaveCancelButtons onCancel={handleCancel} onSave={saveExpense} />
 
     </View>
   )
@@ -77,31 +63,5 @@ const styles = StyleSheet.create({
         flex: 1,
         //justifyContent: 'center',
         backgroundColor: colors.tealLight,
-      },
-      buttonContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        marginHorizontal: 20,
-        marginTop:'55%',
-      },
-      buttonDefault: {
-        backgroundColor: '#71ada8',
-        opacity: 1,
-        borderRadius: 4,
-        padding: 5,
-        width:'35%',
-        justifyContent: 'center',
-      },
-      buttonPressed: {
-        backgroundColor: '#aaa',
-        opacity: 0.5,
-        borderRadius: 4,
-        padding: 5,
-        width:'35%',
-        justifyContent: 'center',
-      },
-      buttonText: {
-        color: 'white', 
-        fontSize: 17,
       },
 })

@@ -3,7 +3,7 @@ import React, { useLayoutEffect,useState } from 'react'
 import ExpenseForm from '../components/ExpenseForm'
 import colors from '../colors';
 import DeleteButton from '../components/DeleteButton';
-import PressableButton from '../components/PressableButton';
+import SaveCancelButtons from '../components/SaveCancelButtons';
 import { updateInDB } from '../firebase/FirebaseHelper';
 import { isDataValid } from '../components/ValidateInput';
 
@@ -75,21 +75,7 @@ const EditScreen = ({ route,navigation }) => {
           onQuantityChange={handleQuantityChange}
         />
 
-            <PressableButton
-                pressedFunction={handleCancel}
-                pressedStyle={styles.buttonPressed}
-                defaultStyle={styles.buttonDefault}
-            >
-                <Text style={styles.buttonText}>Cancel</Text>
-            </PressableButton>
-
-            <PressableButton
-                pressedFunction={handleSave}
-                pressedStyle={styles.buttonPressed}
-                defaultStyle={styles.buttonDefault}
-            >
-                <Text style={styles.buttonText}>Save</Text>
-            </PressableButton>
+        <SaveCancelButtons onCancel={handleCancel} onSave={handleSave} />
       
       </View>
     );
