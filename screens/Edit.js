@@ -1,11 +1,26 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, TouchableOpacity, } from 'react-native'
+import React, { useLayoutEffect } from 'react'
 import ExpenseForm from '../components/ExpenseForm'
 import colors from '../colors';
+import DeleteButton from '../components/DeleteButton';
 
-const EditScreen = ({ route }) => {
+const EditScreen = ({ route,navigation }) => {
     const { entryId, item, unitPrice, quantity } = route.params;
-  
+    
+    const onDeleteSuccess = () => {
+        navigation.goBack();
+      };
+
+    // Define the navigation tab options
+    useLayoutEffect(() => {
+        navigation.setOptions({
+        headerRight: () => (
+            <DeleteButton entryId={entryId} onDeleteSuccess={onDeleteSuccess} />
+        ),
+        });
+    }, [navigation, onDeleteSuccess]);
+
+
     return (
       <View style={styles.container}>
         <ExpenseForm
@@ -14,7 +29,6 @@ const EditScreen = ({ route }) => {
           quantity={quantity}
           
         />
-        {/* Other components or buttons for editing and saving */}
       </View>
     );
   };

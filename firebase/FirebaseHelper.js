@@ -9,3 +9,13 @@ export async function writeToDB(entry) {
     console.log(err);
   }
 }
+
+export async function deleteFromDB(id) {
+  try {
+    await deleteDoc(doc(database, "Expenses", id));
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+

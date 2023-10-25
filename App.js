@@ -9,7 +9,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import AddButton from './components/AddButton';
-import { Ionicons } from "@expo/vector-icons";
 import colors from './colors';
 import EntriesList from './components/EntriesList';
 import Edit from './screens/Edit';
@@ -102,7 +101,7 @@ export default function App() {
                       headerTitleStyle: {
                         fontWeight: 'bold',
                       },
-                    }}  
+                    }}
       />
     </Stack.Navigator>
     </NavigationContainer>
