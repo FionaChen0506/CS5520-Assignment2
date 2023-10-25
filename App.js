@@ -11,6 +11,8 @@ import { AntDesign } from '@expo/vector-icons';
 import AddButton from './components/AddButton';
 import { Ionicons } from "@expo/vector-icons";
 import colors from './colors';
+import EntriesList from './components/EntriesList';
+import Edit from './screens/Edit';
 
 
 const Stack = createNativeStackNavigator();
@@ -89,6 +91,8 @@ export default function App() {
                         fontWeight: 'bold',
                       },
                     }} />
+      <Stack.Screen name="EntriesList" component={EntriesList} />
+      <Stack.Screen name="Edit" component={Edit} />
     </Stack.Navigator>
     </NavigationContainer>
   );

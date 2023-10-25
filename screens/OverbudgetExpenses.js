@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import EntriesList from '../components/EntriesList';
+import colors from '../colors';
 
 // const OverbudgetExpenses = ({navigation}) => {
 //   return (
@@ -10,13 +11,20 @@ import EntriesList from '../components/EntriesList';
 //   )
 // }
 
-const OverbudgetExpenses = () => {
+const OverbudgetExpenses = ({navigation}) => {
   return (
-    <EntriesList type="overbudget" />
+    <View style={styles.container}>
+      <EntriesList type="overbudget" navigation={navigation}/>
+    </View>
   );
 };
 
 
 export default OverbudgetExpenses
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.tealLight,
+  },
+})

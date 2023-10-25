@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import EntriesList from '../components/EntriesList'
+import colors from '../colors'
 
-const AllExpenses = () => {
+const AllExpenses = ({navigation}) => {
   return (
-    <View >
-      <EntriesList type="all" />
+    <View style={styles.container}>
+      <EntriesList type="all" navigation={navigation} />
     </View>
   )
 }
@@ -14,6 +15,7 @@ export default AllExpenses
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#d2f7ea',
+    flex: 1,
+    backgroundColor: colors.tealLight,
   },
 })
